@@ -41,6 +41,7 @@ function playRPS(playerSelection, computerSelection) {
 }
 
 const BTNS_CONTAINER = document.querySelector(".btns-container");
+const RESULTS = document.querySelector(".results");
 let playerChoice,
   computerChoice = "";
 
@@ -50,5 +51,5 @@ BTNS_CONTAINER.addEventListener("click", (e) => {
 
   playerChoice = CHOICES[e.target.className.toUpperCase()];
   computerChoice = getComputerChoice();
-  console.log(playRPS(playerChoice, computerChoice));
+  RESULTS.textContent = playRPS(playerChoice, computerChoice);
 });
