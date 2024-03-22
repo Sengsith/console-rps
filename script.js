@@ -40,10 +40,15 @@ function playRPS(playerSelection, computerSelection) {
   }
 }
 
-// Run 5 rounds of rps
-const ROUNDS = 5;
-for (let i = 0; i < ROUNDS; i++) {
-  let playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
-  let computerChoice = getComputerChoice();
+const BTNS_CONTAINER = document.querySelector(".btns-container");
+let playerChoice,
+  computerChoice = "";
+
+BTNS_CONTAINER.addEventListener("click", (e) => {
+  // Don't want to do anything if clicking within container, while missing a button
+  if (e.target === BTNS_CONTAINER) return;
+
+  playerChoice = CHOICES[e.target.className.toUpperCase()];
+  computerChoice = getComputerChoice();
   console.log(playRPS(playerChoice, computerChoice));
-}
+});
